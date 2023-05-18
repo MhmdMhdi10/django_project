@@ -28,7 +28,7 @@ DJANGO_APPS = [
     'django.contrib.staticfiles',
 ]
 
-PROJECT_APPS = []
+PROJECT_APPS = ['apps.user']
 ECOMMERCE_APPS = []
 THIRD_PARTY_APPS = [
     'corsheaders',
@@ -166,6 +166,8 @@ AUTHENTICATION_BACKENDS = (
     'social_core.backends.facebook.FacebookOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
+
+AUTH_USER_MODEL="user.UserAccount"
 
 EMAIL_BACKEND='django.core.mail.backends.console.EmailBackend'
 
