@@ -14,6 +14,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 DEBUG = True
 
+DOMAIN = os.environ.get('DOMAIN')
+
 ALLOWED_HOSTS = ['*']
 
 # Application definition
@@ -28,8 +30,13 @@ DJANGO_APPS = [
     'django.contrib.staticfiles',
 ]
 
-PROJECT_APPS = ['apps.user']
-ECOMMERCE_APPS = []
+PROJECT_APPS = ['apps.user', 'apps.user_profile']
+
+
+ECOMMERCE_APPS = ['apps.category', 'apps.product',
+                  'apps.cart', 'apps.shipping', 'apps.orders', 'apps.payment', 'apps.coupons', 'apps.wishlist',
+                  'apps.reviews']
+
 THIRD_PARTY_APPS = [
     'corsheaders',
     'rest_framework',
