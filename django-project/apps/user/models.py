@@ -5,6 +5,8 @@ import os
 
 class UserAccountManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
+
+        print(1)
         if not email:
             raise ValueError("Users must have email address")
 
@@ -13,6 +15,7 @@ class UserAccountManager(BaseUserManager):
 
         user.set_password(password)
         user.save()
+        print(user)
 
         return user
 
