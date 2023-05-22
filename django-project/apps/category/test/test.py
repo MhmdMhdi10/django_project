@@ -1,5 +1,5 @@
 import pytest
-from .models import Category
+from ..models import Category
 
 
 @pytest.fixture

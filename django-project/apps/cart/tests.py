@@ -21,12 +21,14 @@ def test_product():
     return Product.objects.create(name='Test Product', price=10)
 
 
+@pytest.mark.django_db
 def test_cart_creation(test_user):
     cart = Cart.objects.create(user=test_user)
     assert cart.user == test_user
     assert cart.total_items == 0
 
 
+@pytest.mark.django_db
 def test_cart_item_creation(test_cart, test_product):
     cart_item = CartItem.objects.create(cart=test_cart, product=test_product, count=2)
     assert cart_item.cart == test_cart

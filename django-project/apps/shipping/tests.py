@@ -11,6 +11,7 @@ def test_shipping():
     )
 
 
+@pytest.mark.django_db
 def test_shipping_creation(test_shipping):
     assert test_shipping.name == 'Test Shipping'
     assert test_shipping.time_to_delivery == '1-3 days'

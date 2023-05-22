@@ -1,6 +1,6 @@
 from django.db import models
 from datetime import datetime
-from apps.category import Category
+from apps.category.models import Category
 
 from django.conf import settings
 domain = settings.DOMAIN

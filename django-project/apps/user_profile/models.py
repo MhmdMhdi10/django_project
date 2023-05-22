@@ -1,8 +1,7 @@
 from django.db import models
 from django.conf import settings
-
-User = settings.AUTH_USER_MODEL
 from apps.orders.countries import Countries
+User = settings.AUTH_USER_MODEL
 
 
 class UserProfile(models.Model):
