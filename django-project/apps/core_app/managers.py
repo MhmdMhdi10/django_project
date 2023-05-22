@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class BaseManager(models.manager):
+class BaseManager(models.Manager):
     def get_query_set(self):
         return super().get_queryset()
 
@@ -13,4 +13,3 @@ class BaseManager(models.manager):
 
     def get_deactivate_list(self):
         return self.get_queryset().filter(is_active=False)
-
