@@ -22,6 +22,7 @@ ALLOWED_HOSTS = ['*']
 
 
 DJANGO_APPS = [
+    # 'django_admin_tailwind',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -33,7 +34,7 @@ DJANGO_APPS = [
 PROJECT_APPS = ['apps.user', 'apps.user_profile']
 
 
-ECOMMERCE_APPS = ['apps.category', 'apps.product',
+ECOMMERCE_APPS = ['apps.core_app', 'apps.category', 'apps.product',
                   'apps.cart', 'apps.shipping', 'apps.orders', 'apps.payment', 'apps.coupons', 'apps.wishlist',
                   'apps.reviews']
 
@@ -90,7 +91,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'core_app.wsgi.application'
+WSGI_APPLICATION = 'core.wsgi.application'
 
 DATABASES = {
     "default": env.db("DATABASE_URL", default="postgres:///django_project"),
@@ -167,11 +168,11 @@ AUTHENTICATION_BACKENDS = (
 
 AUTH_USER_MODEL = "user.UserAccount"
 
-EMAIL_BACKEND = 'django.core_app.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 if not DEBUG:
     DEFAULT_FROM_EMAIL = 'MM10'
-    EMAIL_BACKEND = 'django.core_app.mail.backends.smtp.EmailBackend'
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_HOST = env('EMAIL_HOST')
     EMAIL_HOST_USER = env('EMAIL_HOST_USER')
     EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
