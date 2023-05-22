@@ -1,13 +1,12 @@
 from django.db import models
-from datetime import datetime
 from apps.category.models import Category
-# from apps.core_app.models import BaseModel
+from apps.core_app.models import BaseModel
 
 from django.conf import settings
 domain = settings.DOMAIN
 
 
-class Product(models.Model):
+class Product(BaseModel):
     class Meta:
         verbose_name = 'Product'
         verbose_name_plural = 'Products'
