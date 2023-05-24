@@ -19,7 +19,7 @@ class Review(BaseModel):
     reply = models.ForeignKey('self', on_delete=models.CASCADE, related_name='rcomments', blank=True, null=True)
     is_reply = models.BooleanField(default=False)
     head = models.CharField(max_length=255)
-    body = models.TextField(max_length=400)
+    body = models.TextField()
     rating = models.DecimalField(max_digits=2, decimal_places=1)
 
     def __str__(self):
