@@ -1,5 +1,6 @@
 import { Fragment } from 'react'
 import { Popover, Transition } from '@headlessui/react'
+import {Link} from "react-router-dom";
 import {
     BookmarkAltIcon,
     BriefcaseIcon,
@@ -90,14 +91,14 @@ export default function Navbar() {
             <div className="relative z-20">
                 <div className="max-w-7xl mx-auto flex justify-between items-center px-4 py-5 sm:px-6 sm:py-4 lg:px-8 md:justify-start md:space-x-10">
                     <div>
-                        <a href="#" className="flex">
+                        <Link to="/" className="flex">
                             <span className="sr-only">Workflow</span>
                             <img
                                 className="h-8 w-auto sm:h-10"
                                 src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
                                 alt=""
                             />
-                        </a>
+                        </Link>
                     </div>
                     <div className="-mr-2 -my-2 md:hidden">
                         <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
@@ -182,9 +183,9 @@ export default function Navbar() {
                                     </>
                                 )}
                             </Popover>
-                            <a href="#" className="text-base font-medium text-gray-500 hover:text-gray-900">
-                                Pricing
-                            </a>
+                            <Link to="#" className="text-base font-medium text-gray-500 hover:text-gray-900">
+                                Store
+                            </Link>
                             <a href="#" className="text-base font-medium text-gray-500 hover:text-gray-900">
                                 Docs
                             </a>
@@ -278,10 +279,10 @@ export default function Navbar() {
                                                             </ul>
                                                         </div>
                                                         <div className="mt-6 text-sm font-medium">
-                                                            <a href="#" className="text-indigo-600 hover:text-indigo-500">
+                                                            <Link to="#" className="text-indigo-600 hover:text-indigo-500">
                                                                 {' '}
                                                                 View all posts <span aria-hidden="true">&rarr;</span>
-                                                            </a>
+                                                            </Link>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -292,15 +293,15 @@ export default function Navbar() {
                             </Popover>
                         </Popover.Group>
                         <div className="flex items-center md:ml-12">
-                            <a href="#" className="text-base font-medium text-gray-500 hover:text-gray-900">
-                                Sign in
-                            </a>
-                            <a
-                                href="#"
+                            <Link to="/login" className="text-base font-medium text-gray-500 hover:text-gray-900">
+                                Login
+                            </Link>
+                            <Link
+                                to="/signup"
                                 className="ml-8 inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
                             >
                                 Sign up
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -363,42 +364,42 @@ export default function Navbar() {
                         </div>
                         <div className="py-6 px-5">
                             <div className="grid grid-cols-2 gap-4">
-                                <a href="#" className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
+                                <Link to="#" className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
                                     Pricing
-                                </a>
+                                </Link>
 
-                                <a href="#" className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
+                                <Link to="#" className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
                                     Docs
-                                </a>
+                                </Link>
 
-                                <a href="#" className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
+                                <Link to="#" className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
                                     Company
-                                </a>
+                                </Link>
 
-                                <a href="#" className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
+                                <Link to="#" className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
                                     Resources
-                                </a>
+                                </Link>
 
-                                <a href="#" className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
+                                <Link to="#" className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
                                     Blog
-                                </a>
+                                </Link>
 
-                                <a href="#" className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
+                                <Link to="#" className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
                                     Contact Sales
-                                </a>
+                                </Link>
                             </div>
                             <div className="mt-6">
-                                <a
-                                    href="#"
+                                <Link
+                                    to="#"
                                     className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
                                 >
                                     Sign up
-                                </a>
+                                </Link>
                                 <p className="mt-6 text-center text-base font-medium text-gray-500">
                                     Existing customer?{' '}
-                                    <a href="#" className="text-indigo-600 hover:text-indigo-500">
+                                    <Link to="#" className="text-indigo-600 hover:text-indigo-500">
                                         Sign in
-                                    </a>
+                                    </Link>
                                 </p>
                             </div>
                         </div>
