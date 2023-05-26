@@ -46,6 +46,7 @@ function Signup({signup}) {
         re_password
         )
         setAccountCreated(true);
+        window.scrollTo(0, 0)
     }
 
     return (
