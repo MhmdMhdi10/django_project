@@ -1,12 +1,14 @@
 import Layout from "../../hocs/layout";
-import {Link} from "react-router-dom";
+import {Link, Navigate} from "react-router-dom";
 import {useState, useEffect} from "react";
 
 import {connect} from "react-redux";
 import {login} from "../../redux/actions/auth";
 import {Oval} from "react-loader-spinner";
 
-function Login({login}) {
+function Login({login, loading}) {
+
+    const [loggedIn, setLoggedIn] = useState(false)
 
 
     useEffect(() => {
@@ -34,8 +36,10 @@ function Login({login}) {
         email,
         password,
         )
-        window.scrollTo(0, 0)
+        setLoggedIn(true)
     }
+    // if (loggedIn && !loading)
+    //     return <Navigate to='/' />;
 
     return (
         <Layout>
@@ -46,11 +50,11 @@ function Login({login}) {
                         src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
                         alt="Workflow"
                     />
-                    <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Sign in to your account</h2>
+                    <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Login</h2>
                     <p className="mt-2 text-center text-sm text-gray-600">
                         Or{' '}
-                        <Link to="#" className="font-medium text-indigo-600 hover:text-indigo-500">
-                            start your 14-day free trial
+                        <Link to="/signup" className="font-medium text-indigo-600 hover:text-indigo-500">
+                            Register
                         </Link>
                     </p>
                 </div>
@@ -93,20 +97,20 @@ function Login({login}) {
 
 
                             <div className="flex items-center justify-between ">
-                                <div className="flex items-center mx-auto">
-                                    <input
-                                        id="remember-me"
-                                        name="remember-me"
-                                        type="checkbox"
-                                        className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
-                                    />
-                                    <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
-                                        Remember me
-                                    </label>
-                                </div>
+                                {/*<div className="flex items-center mx-auto">*/}
+                                {/*    <input*/}
+                                {/*        id="remember-me"*/}
+                                {/*        name="remember-me"*/}
+                                {/*        type="checkbox"*/}
+                                {/*        className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"*/}
+                                {/*    />*/}
+                                {/*    <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">*/}
+                                {/*        Remember me*/}
+                                {/*    </label>*/}
+                                {/*</div>*/}
 
                                 <div className="text-sm">
-                                    <Link to="#" className="font-medium text-indigo-600 hover:text-indigo-500">
+                                    <Link to="/reset_password" className="font-medium text-indigo-600 hover:text-indigo-500">
                                         Forgot your password?
                                     </Link>
                                 </div>
@@ -114,12 +118,25 @@ function Login({login}) {
                             </div>
 
                             <div>
-                                <button
-                                    type="submit"
-                                    className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                                >
-                                    Login
-                                </button>
+                                {loading ?
+                                    <button
+                                        type="submit"
+                                        className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                    >
+                                        Login
+                                        <Oval
+                                            color={"#fff"}
+                                            width={20}
+                                            height={20}
+                                        />
+                                    </button>:
+                                    <button
+                                        type="submit"
+                                        className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                    >
+                                        Login
+                                    </button>
+                                }
                             </div>
                         </form>
 
@@ -187,7 +204,7 @@ function Login({login}) {
 }
 
 const mapStateToProp = state => ({
-
+    loading: state.Auth.loading
 })
 
 export default connect(mapStateToProp, {
