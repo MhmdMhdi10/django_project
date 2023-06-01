@@ -8,9 +8,9 @@ from ..user.models import UserAccount
 class ReviewTestCase(TestCase):
     def setUp(self):
         user = UserAccount.objects.create_user(
-            email='mahdifarokhi@gmail.com',
-            first_name='mahdi',
-            last_name='farokhi',
+            email='mm@gmail.com',
+            first_name='mm',
+            last_name='f',
             password='12345678Lte'
         )
         category = Category.objects.create(
@@ -37,7 +37,7 @@ class ReviewTestCase(TestCase):
 
     def test_review(self):
         user = UserAccount.objects.get(
-            email='mahdifarokhi@gmail.com'
+            email='mm@gmail.com'
         )
         product = Product.objects.get(name='product1')
         review = Review.objects.get(user=user, product=product)
@@ -49,7 +49,7 @@ class ReviewTestCase(TestCase):
 
     def test_str(self):
         user = UserAccount.objects.get(
-            email='mahdifarokhi@gmail.com'
+            email='mm@gmail.com'
         )
         product = Product.objects.get(name='product1')
         review = Review.objects.get(user=user, product=product)

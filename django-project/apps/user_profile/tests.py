@@ -7,9 +7,9 @@ from ..user.models import UserAccount
 class UserProfileTestCase(TestCase):
     def setUp(self):
         user = UserAccount.objects.create_user(
-            email='mahdifarokhi@gmail.com',
-            first_name='mahdi',
-            last_name='farokhi',
+            email='mm@gmail.com',
+            first_name='mm',
+            last_name='f',
             password='12345678Lte'
         )
         address = Address.objects.create(
