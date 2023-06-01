@@ -8,7 +8,7 @@ export default function Example() {
                 <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 sm:static">
                     <div className="sm:max-w-lg">
                         <h1 className="text-4xl font font-extrabold tracking-tight text-black sm:text-6xl lg:-translate-x-40">
-                            Mti Pc
+                            MM10 Pc
                         </h1>
                         <p className="mt-4 text-xl text-black">
                             The best computer parts at the best price

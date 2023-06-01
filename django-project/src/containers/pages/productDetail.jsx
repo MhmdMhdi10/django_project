@@ -1,5 +1,5 @@
-import Layout from "../../hocs/Layout"
-import {useParams} from 'react-router'
+import Layout from "../../hocs/layout";
+import {useParams} from 'react-router-dom'
 import {connect} from 'react-redux';
 import {useNavigate} from 'react-router-dom';
 import {
@@ -20,7 +20,7 @@ import {
     delete_review,
     filter_reviews
 } from '../../redux/actions/reviews';
-import Loader from "react-loader-spinner";
+import {Oval} from "react-loader-spinner";
 import {
     get_items,
     add_item,
@@ -30,7 +30,7 @@ import {
 import {useEffect, useState} from "react";
 import ImageGallery from "../../components/product/ImageGallery";
 import WishlistHeart from "../../components/product/WishlistHeart";
-import {Navigate} from "react-router";
+import {Navigate} from "react-router-dom";
 
 import Stars from '../../components/product/Stars'
 
@@ -267,8 +267,7 @@ const ProductDetail = ({
                                 <div className="mt-4 flex sm:flex-col1">
                                     {loading ? <button
                                             className="max-w-xs flex-1 bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500 sm:w-full">
-                                            <Loader
-                                                type="Oval"
+                                            <Oval
                                                 color="#fff"
                                                 width={20}
                                                 height={20}/>

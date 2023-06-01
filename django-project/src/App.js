@@ -10,12 +10,14 @@ import Login from "./containers/auth/login";
 import Activate from "./containers/auth/activate";
 import ResetPassword from "./containers/auth/resetPassword";
 import ResetPasswordConfirm from "./containers/auth/resetPasswordConfirm";
+import ProductDetail from "./containers/pages/productDetail";
+import Shop from "./containers/Shop";
 
 function App() {
-  return (
-      <Provider store={store}>
-          <Router>
-              <Routes>
+    return (
+        <Provider store={store}>
+            <Router>
+                <Routes>
                   <Route path={'*'} element={<Error404/>}/>
                   <Route exact path={'/'} element={<Home/>}/>
 
@@ -25,10 +27,15 @@ function App() {
                   <Route exact path={'/activate/:uid/:token'} element={<Activate/>}/>
                   <Route exact path={'/reset_password'} element={<ResetPassword/>}/>
                   <Route exact path={'/password/reset/confirm/:uid/:token'} element={<ResetPasswordConfirm/>}/>
-              </Routes>
-          </Router>
-      </Provider>
-  );
+
+
+                  <Route exact path='/shop' element={<Shop/>}/>
+                  <Route exact path='/product/:productId' element={<ProductDetail/>}/>
+
+                </Routes>
+            </Router>
+        </Provider>
+    );
 }
 
 export default App;
