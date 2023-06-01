@@ -1,74 +1,115 @@
-import pytest
-from django.contrib.auth import get_user_model
-from apps.product.models import Product
-from .models import Order, OrderItem
 from datetime import datetime
-from decimal import Decimal
 
-User = get_user_model()
+import pytz
+from django.test import TestCase
+from .models import Order, OrderItem
+from ..category.models import Category
+from apps.coupons.models import Coupon
+from ..product.models import Product
+from ..user.models import UserAccount
 
-@pytest.fixture
-def test_user():
-    return User.objects.create_user(username='testuser', password='testpass')
 
-@pytest.fixture
-def test_product():
-    return Product.objects.create(name='Test Product', price=10)
+class OrderTestCase(TestCase):
+    def setUp(self):
+        user = UserAccount.objects.create_user(
+            email='mahdifarokhi@gmail.com',
+            first_name='mahdi',
+            last_name='farokhi',
+            password='12345678Lte'
+        )
+        coupon = Coupon.objects.create(
+            name='percentage',
+            discount_percentage=10,
+            started=datetime(2022, 11, 20, 20, 8, 7, 127325).replace(tzinfo=pytz.UTC),
+            ended=datetime(2023, 12, 20, 20, 8, 7, 127325).replace(tzinfo=pytz.UTC),
+        )
 
-@pytest.fixture
-def test_order(test_user):
-    return Order.objects.create(
-        status='not_processed',
-        user=test_user,
-        transaction_id='testtransaction',
-        amount=10.99,
-        full_name='Test User',
-        address_line_1='123 Main St',
-        city='Testville',
-        state_province_region='Test State',
-        postal_zip_code='12345',
-        country_region='Peru',
-        telephone_number='555-555-5555',
-        shipping_name='Test Shipping',
-        shipping_time='1-3 days',
-        shipping_price=5.99,
-        date_issued=datetime.now()
-    )
+        Order.objects.create(
+            user=user,
+            coupon=coupon,
+            transaction_id='2',
+            full_name='mahdi farokhi',
+            address='onja',
+            city='tehran',
+            price=100,
+            discount_price=10,
+            shipping_name='shipping_name',
+            shipping_price=10.00,
+            shipping_time='3 days',
+            status='processed'
+        )
+        category = Category.objects.create(
+            name='category',
+        )
+        product = Product.objects.create(
+            name='product1',
+            photo='photo.jpg',
+            description='description1',
+            price=100,
+            discount_price=200,
+            category=category,
+            count=1,
+            sold=1,
+        )
 
-@pytest.fixture
-def test_order_item(test_product, test_order):
-    return OrderItem.objects.create(
-        product=test_product,
-        order=test_order,
-        name='Test Product',
-        price=10,
-        count=1,
-        date_added=datetime.now()
-    )
+        OrderItem.objects.create(
+            order=Order.objects.get(transaction_id='2'),
+            product=product,
+            name='product',
+            price=100,
+            discount_price=10,
+            count=1,
+            status='processed'
+        )
 
-def test_order_creation(test_order, test_user):
-    assert test_order.status == 'not_processed'
-    assert test_order.user == test_user
-    assert test_order.transaction_id == 'testtransaction'
-    assert test_order.amount == Decimal('10.99')
-    assert test_order.full_name == 'Test User'
-    assert test_order.address_line_1 == '123 Main St'
-    assert test_order.city == 'Testville'
-    assert test_order.state_province_region == 'Test State'
-    assert test_order.postal_zip_code == '12345'
-    assert test_order.country_region == 'Peru'
-    assert test_order.telephone_number == '555-555-5555'
-    assert test_order.shipping_name == 'Test Shipping'
-    assert test_order.shipping_time == '1-3 days'
-    assert test_order.shipping_price == Decimal('5.99')
-    assert isinstance(test_order.date_issued, datetime)
-    assert str(test_order) == 'testtransaction'
+    def test_order(self):
+        user = UserAccount.objects.get(
+            email='mahdifarokhi@gmail.com'
+        )
+        order = Order.objects.get(user=user)
+        self.assertEqual(order.user, user)
+        self.assertEqual(order.coupon.name, 'percentage')
+        self.assertEqual(order.transaction_id, '2')
+        self.assertEqual(order.full_name, 'mahdi farokhi')
+        self.assertEqual(order.address, 'onja')
+        self.assertEqual(order.city, 'tehran')
+        self.assertEqual(order.price, 100)
+        self.assertEqual(order.discount_price, 10)
+        self.assertEqual(order.shipping_name, 'shipping_name')
+        self.assertEqual(order.shipping_price, 10.00)
+        self.assertEqual(order.shipping_time, '3 days')
+        self.assertEqual(order.status, 'processed')
+        self.assertNotEqual(order.status, 'not_processed')
+        self.assertNotEqual(order.coupon.name, 'not_percentage')
 
-def test_order_item_creation(test_order_item, test_product, test_order):
-    assert test_order_item.product == test_product
-    assert test_order_item.order == test_order
-    assert test_order_item.name == 'Test Product'
-    assert test_order_item.price == Decimal('10')
-    assert test_order_item.count == 1
-    assert isinstance(test_order_item.date_added, datetime)
-    assert str(test_order_item) == 'Test Product'
+    def test_str(self):
+        user = UserAccount.objects.get(
+            email='mahdifarokhi@gmail.com'
+        )
+        order = Order.objects.get(user=user)
+        self.assertEqual(order.__str__(), '2')
+
+    def test_order_item(self):
+        user = UserAccount.objects.get(
+            email='mahdifarokhi@gmail.com'
+        )
+        order = Order.objects.get(user=user)
+        order_item = OrderItem.objects.get(order=order)
+        product = Product.objects.get(name='product1')
+        self.assertEqual(order_item.order, order)
+        self.assertEqual(order_item.product, product)
+        self.assertEqual(order_item.name, 'product')
+        self.assertEqual(order_item.price, 100)
+        self.assertEqual(order_item.discount_price, 10)
+        self.assertEqual(order_item.count, 1)
+        self.assertEqual(order_item.status, 'processed')
+        self.assertNotEqual(order_item.status, 'not_processed')
+        self.assertNotEqual(order_item.name, 'not_product')
+
+    def test_str(self):
+        user = UserAccount.objects.get(
+            email='mahdifarokhi@gmail.com'
+        )
+        order = Order.objects.get(user=user)
+        order_item = OrderItem.objects.get(order=order)
+        self.assertEqual(order_item.__str__(), 'product')
