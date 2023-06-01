@@ -4,7 +4,7 @@ import {
     SET_AUTH_LOADING, REMOVE_AUTH_LOADING,
     LOGIN_SUCCESS, LOGIN_FAIL,
     USER_LOADED_SUCCESS,USER_LOADED_FAIL,
-    AUTHENTICATION_SUCCESS,AUTHENTICATION_FAIL,
+    AUTHENTICATED_SUCCESS,AUTHENTICATED_FAIL,
     REFRESH_SUCCESS,REFRESH_FAIL,
     RESET_PASSWORD_SUCCESS,RESET_PASSWORD_FAIL,
     RESET_PASSWORD_CONFIRM_SUCCESS,RESET_PASSWORD_CONFIRM_FAIL,
@@ -14,7 +14,6 @@ import {
 } from "./types";
 import {setAlert} from "./alert";
 import axios from "axios";
-import Cookies from "js-cookie";
 
 export const check_authenticated = () => async dispatch => {
     if (localStorage.getItem('access')){
@@ -34,22 +33,22 @@ export const check_authenticated = () => async dispatch => {
 
             if (res.status === 200) {
                 dispatch({
-                    type: AUTHENTICATION_SUCCESS
+                    type: AUTHENTICATED_SUCCESS
                 });
             } else {
                 dispatch({
-                    type: AUTHENTICATION_FAIL
+                    type: AUTHENTICATED_FAIL
                 });
             }
         } catch (err){
             dispatch({
-                type: AUTHENTICATION_FAIL
+                type: AUTHENTICATED_FAIL
             });
         }
 
     } else {
         dispatch({
-            type: AUTHENTICATION_FAIL
+            type: AUTHENTICATED_FAIL
         });
     }
 }

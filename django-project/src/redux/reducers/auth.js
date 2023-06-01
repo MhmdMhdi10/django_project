@@ -4,7 +4,7 @@ import {
     SET_AUTH_LOADING, REMOVE_AUTH_LOADING,
     LOGIN_SUCCESS, LOGIN_FAIL,
     USER_LOADED_SUCCESS, USER_LOADED_FAIL,
-    AUTHENTICATION_SUCCESS, AUTHENTICATION_FAIL,
+    AUTHENTICATED_SUCCESS, AUTHENTICATED_FAIL,
     REFRESH_SUCCESS, REFRESH_FAIL,
     RESET_PASSWORD_SUCCESS, RESET_PASSWORD_FAIL,
     RESET_PASSWORD_CONFIRM_SUCCESS, RESET_PASSWORD_CONFIRM_FAIL,
@@ -43,12 +43,12 @@ export default function Auth(state = initialState, action) {
                 ...state,
                 user: null
             }
-        case AUTHENTICATION_SUCCESS:
+        case AUTHENTICATED_SUCCESS:
             return {
                 ...state,
                 isAuthenticated: true
             }
-        case AUTHENTICATION_FAIL:
+        case AUTHENTICATED_FAIL:
             localStorage.removeItem('access');
             localStorage.removeItem('refresh');
                 return {
