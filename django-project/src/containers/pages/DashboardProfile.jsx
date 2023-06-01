@@ -27,7 +27,7 @@ import {SearchIcon} from '@heroicons/react/solid'
 import {Link} from 'react-router-dom';
 import {countries} from '../../helpers/fixedCountries';
 import {update_user_profile} from '../../redux/actions/profile';
-import Loader from 'react-loader-spinner';
+import {Oval} from 'react-loader-spinner';
 
 const userNavigation = [
     {name: 'Your Profile', href: '#'},
@@ -373,8 +373,7 @@ const DashboardProfile = ({
                                     {loading ? <button
                                         className="inline-flex mt-4 float-right items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                                     >
-                                        <Loader
-                                            type="Oval"
+                                        <Oval
                                             width={20}
                                             height={20}
                                             color="#fff"

@@ -19,7 +19,7 @@ import {
 } from '../../redux/actions/payment';
 
 import DropIn from 'braintree-web-drop-in-react';
-import Loader from 'react-loader-spinner';
+import {Oval} from 'react-loader-spinner';
 import {countries} from '../../helpers/fixedCountries'
 import ShippingForm from '../../components/checkout/ShippingForm'
 
@@ -203,8 +203,7 @@ const Checkout = ({
                 <button
                     className="w-full bg-indigo-600 border border-transparent rounded-md shadow-sm py-3 px-4 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500"
                 >
-                    <Loader
-                        type='Oval'
+                    <Oval
                         color='#fff'
                         height={20}
                         widht={20}
@@ -227,8 +226,7 @@ const Checkout = ({
                         {loading ? <button
                                 className="w-full bg-indigo-600 border border-transparent rounded-md shadow-sm py-3 px-4 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500"
                             >
-                                <Loader
-                                    type='Oval'
+                                <Oval
                                     color='#fff'
                                     height={20}
                                     widht={20}
