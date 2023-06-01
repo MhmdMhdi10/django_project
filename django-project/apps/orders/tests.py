@@ -12,9 +12,9 @@ from ..user.models import UserAccount
 class OrderTestCase(TestCase):
     def setUp(self):
         user = UserAccount.objects.create_user(
-            email='mahdifarokhi@gmail.com',
-            first_name='mahdi',
-            last_name='farokhi',
+            email='mm@gmail.com',
+            first_name='mm',
+            last_name='f',
             password='12345678Lte'
         )
         coupon = Coupon.objects.create(
@@ -28,7 +28,7 @@ class OrderTestCase(TestCase):
             user=user,
             coupon=coupon,
             transaction_id='2',
-            full_name='mahdi farokhi',
+            full_name='mm f',
             address='onja',
             city='tehran',
             price=100,
@@ -64,13 +64,13 @@ class OrderTestCase(TestCase):
 
     def test_order(self):
         user = UserAccount.objects.get(
-            email='mahdifarokhi@gmail.com'
+            email='mm@gmail.com'
         )
         order = Order.objects.get(user=user)
         self.assertEqual(order.user, user)
         self.assertEqual(order.coupon.name, 'percentage')
         self.assertEqual(order.transaction_id, '2')
-        self.assertEqual(order.full_name, 'mahdi farokhi')
+        self.assertEqual(order.full_name, 'mm f')
         self.assertEqual(order.address, 'onja')
         self.assertEqual(order.city, 'tehran')
         self.assertEqual(order.price, 100)
@@ -84,14 +84,14 @@ class OrderTestCase(TestCase):
 
     def test_str(self):
         user = UserAccount.objects.get(
-            email='mahdifarokhi@gmail.com'
+            email='mm@gmail.com'
         )
         order = Order.objects.get(user=user)
         self.assertEqual(order.__str__(), '2')
 
     def test_order_item(self):
         user = UserAccount.objects.get(
-            email='mahdifarokhi@gmail.com'
+            email='mm@gmail.com'
         )
         order = Order.objects.get(user=user)
         order_item = OrderItem.objects.get(order=order)
@@ -108,7 +108,7 @@ class OrderTestCase(TestCase):
 
     def test_str(self):
         user = UserAccount.objects.get(
-            email='mahdifarokhi@gmail.com'
+            email='mm@gmail.com'
         )
         order = Order.objects.get(user=user)
         order_item = OrderItem.objects.get(order=order)

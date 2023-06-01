@@ -9,8 +9,8 @@ class CartTestCase(TestCase):
     def setUp(self):
         user = UserAccount.objects.create_user(
             email='regrh@gmail.com',
-            first_name='mahdi',
-            last_name='farokhi',
+            first_name='mm',
+            last_name='f',
             password='12345678Lte'
         )
 
