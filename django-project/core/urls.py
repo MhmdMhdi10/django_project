@@ -20,7 +20,7 @@ urlpatterns = [
     path('api/order/', include('apps.orders.urls', namespace='order')),
     # path('api/payment/', include('apps.payment.urls')),
     path('api/coupon/', include('apps.coupons.urls')),
-    # path('api/profile/', include('apps.user_profile.urls')),
+    path('api/profile/', include('apps.user_profile.urls')),
     # path('api/wishlist/', include('apps.wishlist.urls')),
     # path('api/review/', include('apps.review.urls')),
 
