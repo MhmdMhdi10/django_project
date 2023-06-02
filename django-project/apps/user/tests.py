@@ -19,8 +19,8 @@ class UserAccountTestCase(TestCase):
         self.assertEqual(user.last_name, 'mahdi')
         self.assertEqual(user.is_active, True)
         self.assertEqual(user.is_staff, False)
-        self.assertNotEqual(user.first_name, 'mohammad')
-        self.assertNotEqual(user.last_name, 'mahdi')
+        self.assertNotEqual(user.first_name, 'mohammad1')
+        self.assertNotEqual(user.last_name, 'mahdi1')
         self.assertNotEqual(user.is_active, False)
         self.assertNotEqual(user.is_staff, True)
 
