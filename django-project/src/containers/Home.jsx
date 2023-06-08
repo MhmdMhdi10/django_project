@@ -1,4 +1,4 @@
-import Layout from "../hocs/layout";
+import Layout from "../hocs/Layout"
 import { connect } from 'react-redux';
 import {
     get_products_by_arrival,

@@ -1,6 +1,6 @@
-import Layout from "../../hocs/layout";
+import Layout from '../../hocs/Layout'
 import {connect} from 'react-redux'
-import {Navigate} from 'react-router-dom';
+import {Navigate} from 'react-router';
 import {reset} from '../../redux/actions/payment';
 import {useEffect} from 'react';
 

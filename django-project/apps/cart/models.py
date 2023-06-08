@@ -1,6 +1,6 @@
 from django.db import models
 
-from apps.core_app.models import BaseModel
+from apps.core.models import BaseModel
 from apps.product.models import Product
 from django.conf import settings
 
@@ -9,8 +9,8 @@ User = settings.AUTH_USER_MODEL
 
 class Cart(BaseModel):
     class Meta:
-        verbose_name = "cart"
-        verbose_name_plural = "carts"
+        verbose_name = 'Cart'
+        verbose_name_plural = 'Carts'
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
@@ -20,8 +20,8 @@ class Cart(BaseModel):
 
 class CartItem(BaseModel):
     class Meta:
-        verbose_name = "cart_item"
-        verbose_name_plural = "cart_items"
+        verbose_name = 'Cart Item'
+        verbose_name_plural = 'Cart Items'
 
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE, related_name='items', null=True, blank=True)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)

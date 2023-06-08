@@ -1,4 +1,4 @@
-import Layout from "../../hocs/layout";
+import Layout from '../../hocs/Layout'
 import {connect} from 'react-redux'
 import {list_orders} from '../../redux/actions/orders'
 import {
@@ -7,7 +7,7 @@ import {
     get_item_total
 } from "../../redux/actions/cart";
 import {useEffect} from 'react';
-import {Navigate} from 'react-router-dom';
+import {Navigate} from 'react-router';
 import DashboardLink from '../../components/dashboard/DashboardLink';
 import {Fragment, useState} from 'react'
 import {Dialog, Menu, Transition} from '@headlessui/react'

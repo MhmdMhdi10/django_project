@@ -1,4 +1,4 @@
-import Layout from "../../hocs/layout";
+import Layout from "../../hocs/Layout"
 import { useState } from "react";
 import { connect } from "react-redux"
 import { setAlert } from "../../redux/actions/alert";

@@ -1,4 +1,4 @@
-from apps.core_app.models import BaseModel
+from apps.core.models import BaseModel
 from apps.product.models import Product
 from django.db import models
 

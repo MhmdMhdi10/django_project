@@ -1,5 +1,5 @@
-import Layout from '../../hocs/layout'
-import {Navigate} from 'react-router-dom'
+import Layout from '../../hocs/Layout'
+import {Navigate} from 'react-router'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import CartItem from '../../components/cart/CartItem'

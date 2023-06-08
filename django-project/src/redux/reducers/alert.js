@@ -1,17 +1,18 @@
 import {
-    SET_ALERT, REMOVE_ALERT
-} from "../actions/types";
+    SET_ALERT,
+    REMOVE_ALERT,
+} from '../actions/types';
 
 const initialState = {
-  alert: null
+    alert: null
 };
 
 export default function Alert(state = initialState, action) {
-    const {type , payload} = action;
+    const { type, payload } = action;
 
-    switch (type){
+    switch(type) {
         case SET_ALERT:
-            return{
+            return {
                 ...state,
                 alert: payload
             };
@@ -19,9 +20,8 @@ export default function Alert(state = initialState, action) {
             return {
                 ...state,
                 alert: null
-            };
+            }
         default:
             return state
-    }
-
+    };
 }

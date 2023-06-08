@@ -4,7 +4,7 @@ const WishlistHeart =({
     product,
     wishlist
 })=>{
-
+    
 
     const renderWishlistHeart = () => {
         let selected = false;
@@ -14,7 +14,7 @@ const WishlistHeart =({
             wishlist !== null &&
             wishlist !== undefined &&
             product &&
-            product !== null &&
+            product !== null && 
             product !== undefined
         ) {
             wishlist.map(item => {
@@ -23,10 +23,10 @@ const WishlistHeart =({
                 }
             });
         }
-
+    
         if (selected) {
             return (
-                <button
+                <button 
                 onClick={addToWishlist}
                 className="ml-4 py-3 px-3 rounded-md flex items-center justify-center text-gray-400 bg-gray-200 hover:text-gray-500">
                     <svg className="h-6 w-6 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -37,7 +37,7 @@ const WishlistHeart =({
             )
         } else {
             return (
-                <button
+                <button 
                 onClick={addToWishlist}
                 className="ml-4 py-3 px-3 rounded-md flex items-center justify-center text-gray-400 hover:bg-gray-100 hover:text-gray-500">
                     <svg className="h-6 w-6 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">

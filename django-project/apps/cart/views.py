@@ -281,7 +281,7 @@ class EmptyCartView(APIView):
 
             if not CartItem.objects.filter(cart=cart).exists():
                 return Response(
-                    {'success': 'Cart.jsx is already empty'},
+                    {'success': 'Cart is already empty'},
                     status=status.HTTP_200_OK)
 
             CartItem.objects.filter(cart=cart).delete()
@@ -290,7 +290,7 @@ class EmptyCartView(APIView):
             Cart.objects.filter(user=user).update(total_items=0)
 
             return Response(
-                {'success': 'Cart.jsx emptied successfully'},
+                {'success': 'Cart emptied successfully'},
                 status=status.HTTP_200_OK)
         except:
             return Response(
@@ -360,7 +360,7 @@ class SynchCartView(APIView):
                             )
 
                 return Response(
-                    {'success': 'Cart.jsx Synchronized'},
+                    {'success': 'Cart Synchronized'},
                     status=status.HTTP_201_CREATED)
         except:
             return Response(

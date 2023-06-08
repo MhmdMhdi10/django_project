@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from apps.core_app.admin import BaseAdmin
+from apps.core.admin import BaseAdmin
 from apps.product.models import Product
 
 

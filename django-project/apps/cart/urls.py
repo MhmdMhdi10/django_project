@@ -13,3 +13,4 @@ urlpatterns = [
     path('empty-cart', EmptyCartView.as_view()),
     path('synch', SynchCartView.as_view()),
 ]
+

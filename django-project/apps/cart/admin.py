@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import Cart, CartItem
-from apps.core_app.admin import BaseAdmin
+from ..core.admin import BaseAdmin
 
 
 @admin.register(Cart)
@@ -12,8 +12,7 @@ class CartAdmin(BaseAdmin):
 
 @admin.register(CartItem)
 class CartItemAdmin(BaseAdmin):
-    list_display = ['id', 'cart', 'product', 'count', 'created', 'last_updated', 'deleted_at', 'restored_at',
-                    'is_deleted', 'is_active']
+    list_display = ['id', 'cart', 'product', 'count', 'created', 'last_updated', 'deleted_at', 'restored_at', 'is_deleted',
+                    'is_active']
     list_filter = ['cart', 'product', 'count']
     search_fields = ['cart', 'product', 'count']
-

@@ -1,7 +1,7 @@
-import Layout from "../../hocs/layout";
+import Layout from '../../hocs/Layout'
 import {connect} from 'react-redux'
 import {list_orders} from '../../redux/actions/orders'
-import {useParams} from 'react-router-dom';
+import {useParams} from 'react-router';
 import {
     get_items,
     get_total,
@@ -9,7 +9,7 @@ import {
 } from "../../redux/actions/cart";
 import {get_order_detail} from '../../redux/actions/orders';
 import {useEffect} from 'react';
-import {Navigate} from 'react-router-dom';
+import {Navigate} from 'react-router';
 import DashboardLink from '../../components/dashboard/DashboardLink';
 import {Fragment, useState} from 'react'
 import {Dialog, Menu, Transition} from '@headlessui/react'

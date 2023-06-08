@@ -49,22 +49,26 @@ class GetUserAddressView(APIView):
 class UpdateUserProfileView(APIView):
     def put(self, request):
         try:
+            print('1')
             user = self.request.user
+            print('2')
             data = self.request.data
-
+            print('3')
             body = data['body_2']
             city = data['city']
             phone = data['phone']
             image = data['image']
+            print('4')
 
             user_profile = UserProfile.objects.get(user=user)
-            address = Address.objects.get(id=user_profile.address.id)
-
-            if body == '':
-                body = address.body
-
-            if city == '':
-                city = address.city
+            print('5')
+            # address = Address.objects.get(id=user_profile.address.id)
+            print('5')
+            # if body == '':
+            #     body = address.body
+            #
+            # if city == '':
+            #     city = address.city
 
             if phone == '':
                 phone = user_profile.phone

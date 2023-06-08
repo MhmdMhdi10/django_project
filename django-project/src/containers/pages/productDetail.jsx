@@ -1,5 +1,5 @@
-import Layout from "../../hocs/layout";
-import {useParams} from 'react-router-dom'
+import Layout from "../../hocs/Layout"
+import {useParams} from 'react-router'
 import {connect} from 'react-redux';
 import {useNavigate} from 'react-router-dom';
 import {
@@ -275,7 +275,7 @@ const ProductDetail = ({
                                         <button
                                             onClick={addToCart}
                                             className="max-w-xs flex-1 bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500 sm:w-full">
-                                            ADD to Cart
+                                            Agregar al Carrito
                                         </button>}
 
                                     <WishlistHeart

@@ -1,24 +1,31 @@
 import {
-    SIGNUP_SUCCESS, SIGNUP_FAIL,
-    ACTIVATION_SUCCESS, ACTIVATION_FAIL,
-    SET_AUTH_LOADING, REMOVE_AUTH_LOADING,
-    LOGIN_SUCCESS, LOGIN_FAIL,
-    USER_LOADED_SUCCESS,USER_LOADED_FAIL,
-    AUTHENTICATED_SUCCESS,AUTHENTICATED_FAIL,
-    REFRESH_SUCCESS,REFRESH_FAIL,
-    RESET_PASSWORD_SUCCESS,RESET_PASSWORD_FAIL,
-    RESET_PASSWORD_CONFIRM_SUCCESS,RESET_PASSWORD_CONFIRM_FAIL,
-    LOGOUT,
-
-
-} from "./types";
-import {setAlert} from "./alert";
-import axios from "axios";
+    SIGNUP_SUCCESS,
+    SIGNUP_FAIL,
+    LOGIN_SUCCESS,
+    LOGIN_FAIL,
+    ACTIVATION_SUCCESS,
+    ACTIVATION_FAIL,
+    SET_AUTH_LOADING,
+    REMOVE_AUTH_LOADING,
+    USER_LOADED_SUCCESS,
+    USER_LOADED_FAIL,
+    AUTHENTICATED_SUCCESS,
+    AUTHENTICATED_FAIL,
+    REFRESH_SUCCESS,
+    REFRESH_FAIL,
+    RESET_PASSWORD_SUCCESS,
+    RESET_PASSWORD_FAIL,
+    RESET_PASSWORD_CONFIRM_SUCCESS,
+    RESET_PASSWORD_CONFIRM_FAIL,
+    LOGOUT
+} from './types'
+import {setAlert} from './alert';
+import axios from 'axios'
 
 export const check_authenticated = () => async dispatch => {
-    if (localStorage.getItem('access')){
+    if (localStorage.getItem('access')) {
         const config = {
-            headers:{
+            headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             }
@@ -40,12 +47,11 @@ export const check_authenticated = () => async dispatch => {
                     type: AUTHENTICATED_FAIL
                 });
             }
-        } catch (err){
+        } catch (err) {
             dispatch({
                 type: AUTHENTICATED_FAIL
             });
         }
-
     } else {
         dispatch({
             type: AUTHENTICATED_FAIL
@@ -53,19 +59,16 @@ export const check_authenticated = () => async dispatch => {
     }
 }
 
-export const signup = (first_name, last_name, email, password, re_password) => async (dispatch) => {
-
-
-
+export const signup = (first_name, last_name, email, password, re_password) => async dispatch => {
     dispatch({
-       type: SET_AUTH_LOADING
+        type: SET_AUTH_LOADING
     });
 
-    const headers = {
-        "Content-Type": "application/json",
+    const config = {
+        headers: {
+            'Content-Type': 'application/json'
+        }
     };
-
-    console.log(headers)
 
     const body = JSON.stringify({
         first_name,
@@ -76,25 +79,23 @@ export const signup = (first_name, last_name, email, password, re_password) => a
     });
 
     try {
-        const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/users/`, body, {
-            headers,
-        });
+        const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/users/`, body, config);
 
 
         if (res.status === 201) {
             dispatch({
                 type: SIGNUP_SUCCESS,
-                payload: res.data,
+                payload: res.data
             });
-            dispatch(setAlert('signup was successful', 'green'))
+            dispatch(setAlert('Send email', 'green'))
         } else {
             dispatch({
-                type: SIGNUP_FAIL,
+                type: SIGNUP_FAIL
             });
-            dispatch(setAlert('signup Failed', 'red'))
+            dispatch(setAlert('Error', 'red'));
         }
         dispatch({
-            type: REMOVE_AUTH_LOADING,
+            type: REMOVE_AUTH_LOADING
         });
     } catch (err) {
         dispatch({
@@ -103,20 +104,22 @@ export const signup = (first_name, last_name, email, password, re_password) => a
         dispatch({
             type: REMOVE_AUTH_LOADING
         });
-        dispatch(setAlert('signup failed', 'red'))
+        dispatch(setAlert('Error', 'red'));
     }
 };
 
 export const load_user = () => async dispatch => {
-    if(localStorage.getItem('access')){
+    if (localStorage.getItem('access')) {
         const config = {
             headers: {
                 'Authorization': `JWT ${localStorage.getItem('access')}`,
                 'Accept': 'application/json'
             }
         };
+
         try {
             const res = await axios.get(`${process.env.REACT_APP_API_URL}/auth/users/me/`, config);
+
             if (res.status === 200) {
                 dispatch({
                     type: USER_LOADED_SUCCESS,
@@ -127,7 +130,7 @@ export const load_user = () => async dispatch => {
                     type: USER_LOADED_FAIL
                 });
             }
-        }catch (err){
+        } catch (err) {
             dispatch({
                 type: USER_LOADED_FAIL
             });
@@ -137,11 +140,11 @@ export const load_user = () => async dispatch => {
             type: USER_LOADED_FAIL
         });
     }
-};
+}
 
 export const login = (email, password) => async dispatch => {
     dispatch({
-       type: SET_AUTH_LOADING
+        type: SET_AUTH_LOADING
     });
 
     const config = {
@@ -150,46 +153,42 @@ export const login = (email, password) => async dispatch => {
         }
     };
 
-    const  body = JSON.stringify({
+    const body = JSON.stringify({
         email,
         password
     });
 
     try {
-        const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/jwt/create/`, body, config)
-
+        const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/jwt/create/`, body, config);
         if (res.status === 200) {
             dispatch({
                 type: LOGIN_SUCCESS,
                 payload: res.data
             });
             dispatch(load_user());
-
             dispatch({
-                type:REMOVE_AUTH_LOADING,
+                type: REMOVE_AUTH_LOADING
             });
-            dispatch(setAlert('login successful', 'green'));
+            dispatch(setAlert('Login successfully', 'green'));
         } else {
             dispatch({
-                type:LOGIN_FAIL
+                type: LOGIN_FAIL
             });
             dispatch({
                 type: REMOVE_AUTH_LOADING
             });
-            dispatch(setAlert('login failed', 'red'))
+            dispatch(setAlert('Error', 'red'));
         }
-
-    } catch(err){
+    } catch (err) {
         dispatch({
-            type:LOGIN_FAIL
+            type: LOGIN_FAIL
         });
         dispatch({
             type: REMOVE_AUTH_LOADING
         });
-        dispatch(setAlert('login failed', 'red'))
+        dispatch(setAlert('Error', 'red'));
     }
-
-};
+}
 
 export const activate = (uid, token) => async dispatch => {
     dispatch({
@@ -214,30 +213,29 @@ export const activate = (uid, token) => async dispatch => {
             dispatch({
                 type: ACTIVATION_SUCCESS
             });
-            dispatch(setAlert('account has been activated', 'green'));
+            dispatch(setAlert('Successful Activation', 'green'));
         } else {
             dispatch({
                 type: ACTIVATION_FAIL
             });
-            dispatch(setAlert('account activation failed', 'red'));
+            dispatch(setAlert('Error Activation', 'red'));
         }
         dispatch({
             type: REMOVE_AUTH_LOADING
         });
-    }
-    catch(err){
+    } catch (err) {
         dispatch({
             type: ACTIVATION_FAIL
         });
         dispatch({
             type: REMOVE_AUTH_LOADING
         });
-        dispatch(setAlert('error while connecting to server', 'red'));
+        dispatch(setAlert('Error Activation', 'red'));
     }
 };
 
 export const refresh = () => async dispatch => {
-    if (localStorage.getItem('refresh')){
+    if (localStorage.getItem('refresh')) {
         const config = {
             headers: {
                 'Accept': 'application/json',
@@ -262,13 +260,11 @@ export const refresh = () => async dispatch => {
                     type: REFRESH_FAIL
                 });
             }
-
-        } catch (err){
+        } catch (err) {
             dispatch({
                 type: REFRESH_FAIL
             });
         }
-
     } else {
         dispatch({
             type: REFRESH_FAIL
@@ -289,41 +285,35 @@ export const reset_password = (email) => async dispatch => {
 
     const body = JSON.stringify({email});
 
-
     try {
         const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/users/reset_password/`, body, config);
 
         if (res.status === 204) {
             dispatch({
-                type:RESET_PASSWORD_SUCCESS
+                type: RESET_PASSWORD_SUCCESS
             });
             dispatch({
-                type:REMOVE_AUTH_LOADING
+                type: REMOVE_AUTH_LOADING
             });
-            dispatch(setAlert('Password reset email has been sent', 'green'));
-
+            dispatch(setAlert('Password reset email sent', 'green'));
         } else {
             dispatch({
-                type:RESET_PASSWORD_FAIL
+                type: RESET_PASSWORD_FAIL
             });
             dispatch({
-                type:REMOVE_AUTH_LOADING
+                type: REMOVE_AUTH_LOADING
             });
-            dispatch(setAlert('error while sending reset password email', 'red'));
-
+            dispatch(setAlert('Error sending password reset email', 'red'));
         }
-
-    } catch (err){
+    } catch (err) {
         dispatch({
-            type:RESET_PASSWORD_FAIL
+            type: RESET_PASSWORD_FAIL
         });
         dispatch({
-            type:REMOVE_AUTH_LOADING
+            type: REMOVE_AUTH_LOADING
         });
-        dispatch(setAlert('error while sending reset password email', 'red'));
-
+        dispatch(setAlert('Error sending password reset email', 'red'));
     }
-
 }
 
 export const reset_password_confirm = (uid, token, new_password, re_new_password) => async dispatch => {
@@ -332,10 +322,10 @@ export const reset_password_confirm = (uid, token, new_password, re_new_password
     });
 
     const config = {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        };
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
 
     const body = JSON.stringify({
         uid,
@@ -351,7 +341,7 @@ export const reset_password_confirm = (uid, token, new_password, re_new_password
         dispatch({
             type: REMOVE_AUTH_LOADING
         });
-        dispatch(setAlert('passwords do not match', 'red'));
+        dispatch(setAlert('Passwords do not match', 'red'));
     } else {
         try {
             const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/users/reset_password_confirm/`, body, config);
@@ -363,7 +353,7 @@ export const reset_password_confirm = (uid, token, new_password, re_new_password
                 dispatch({
                     type: REMOVE_AUTH_LOADING
                 });
-                dispatch(setAlert('password reset successful', 'green'));
+                dispatch(setAlert('Password has been reset successfully', 'green'));
             } else {
                 dispatch({
                     type: RESET_PASSWORD_CONFIRM_FAIL
@@ -371,7 +361,7 @@ export const reset_password_confirm = (uid, token, new_password, re_new_password
                 dispatch({
                     type: REMOVE_AUTH_LOADING
                 });
-                dispatch(setAlert('password reset failed', 'red'));
+                dispatch(setAlert('Error resetting your password', 'red'));
             }
         } catch (err) {
             dispatch({
@@ -380,15 +370,15 @@ export const reset_password_confirm = (uid, token, new_password, re_new_password
             dispatch({
                 type: REMOVE_AUTH_LOADING
             });
-            dispatch(setAlert('password reset failed', 'red'));
+            dispatch(setAlert('Error resetting your password', 'red'));
         }
     }
-
 }
 
-export const logout = () => async dispatch => {
+export const logout = () => dispatch => {
     dispatch({
         type: LOGOUT
     });
-    dispatch(setAlert("logout successful", 'green'));
+    dispatch(setAlert('Succesfully logged out', 'green'));
 }
+

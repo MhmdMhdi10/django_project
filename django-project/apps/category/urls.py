@@ -3,5 +3,6 @@ from .views import CategoryListView
 
 app_name = 'category'
 urlpatterns = [
-    path('categories', CategoryListView.as_view(), name='category_list'),
+    path('categories', CategoryListView.as_view(), name='list'),
 ]
+

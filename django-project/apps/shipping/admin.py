@@ -1,7 +1,6 @@
 from django.contrib import admin
-
-from apps.core_app.admin import BaseAdmin
-from.models import Shipping
+from .models import Shipping
+from ..core.admin import BaseAdmin
 
 
 class ShippingAdmin(BaseAdmin):

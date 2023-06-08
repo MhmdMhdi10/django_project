@@ -48,7 +48,7 @@ const DashboardLink =()=>{
             />
             Dashboard
             </Link>
-
+            
             <Link
             to="/dashboard/payments"
             className={classNames('text-gray-600 hover:bg-gray-50 hover:text-gray-900',
@@ -63,7 +63,7 @@ const DashboardLink =()=>{
             />
             Payment History
             </Link>
-
+            
             <Link
             to="/dashboard/profile"
             className={classNames('text-gray-600 hover:bg-gray-50 hover:text-gray-900',

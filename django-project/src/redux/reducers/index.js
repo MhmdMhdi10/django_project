@@ -5,7 +5,7 @@ import Categories from './categories';
 import Products from './products';
 import Cart from './cart';
 import Shipping from "./shipping";
-// import Payment from "./payment";
+import Payment from "./payment";
 import Coupons from "./coupons";
 import Orders from "./orders";
 import Profile from "./profile";
@@ -20,7 +20,7 @@ export default combineReducers({
     Products,
     Cart,
     Shipping,
-    // Payment,
+    Payment,
     Coupons,
     Orders,
     Profile,
@@ -28,3 +28,4 @@ export default combineReducers({
     Reviews,
     Address
 })
+

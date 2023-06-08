@@ -1,4 +1,4 @@
-import Layout from "../../hocs/layout";
+import Layout from '../../hocs/Layout'
 import { connect } from 'react-redux'
 import {list_orders} from '../../redux/actions/orders'
 import {
@@ -7,7 +7,7 @@ import {
     get_item_total
 } from "../../redux/actions/cart";
 import { useEffect } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router';
 import DashboardLink from '../../components/dashboard/DashboardLink';
 import { Fragment, useState } from 'react'
 import { Dialog, Menu, Transition } from '@headlessui/react'
@@ -145,7 +145,7 @@ const Dashboard =({
               {/*  src="https://tailwindui.com/img/logos/workflow-logo-indigo-600-mark-gray-800-text.svg"*/}
               {/*  alt="Workflow"*/}
               {/*/>*/}
-
+              
             </div>
             <div className="mt-5 flex-grow flex flex-col">
               <nav className="flex-1 px-2 pb-4 space-y-1">
@@ -252,20 +252,20 @@ const Dashboard =({
             <dt className="text-sm font-medium text-gray-500">Full name</dt>
             <dd className="mt-1 flex text-sm text-gray-900 sm:mt-0 sm:col-span-2">
               <span className="flex-grow">{user.first_name} {user.last_name}</span>
-
+              
             </dd>
           </div>
 
-
+          
           <div className="py-4 sm:grid sm:py-5 sm:grid-cols-3 sm:gap-4">
             <dt className="text-sm font-medium text-gray-500">Email address</dt>
             <dd className="mt-1 flex text-sm text-gray-900 sm:mt-0 sm:col-span-2">
               <span className="flex-grow">{user.email}</span>
-
+              
             </dd>
           </div>
 
-
+         
         </dl>
       </div>
             </div>

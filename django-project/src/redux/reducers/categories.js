@@ -1,13 +1,16 @@
-import {GET_CATEGORIES_SUCCESS, GET_CATEGORIES_FAIL} from "../actions/types";
+import {
+    GET_CATEGORIES_SUCCESS,
+    GET_CATEGORIES_FAIL
+} from '../actions/types';
 
 const initialState = {
     categories: null
 };
 
 export default function Categories(state = initialState, action) {
-    const {type, payload} = action;
+    const { type, payload } = action;
 
-    switch (type) {
+    switch(type) {
         case GET_CATEGORIES_SUCCESS:
             return {
                 ...state,

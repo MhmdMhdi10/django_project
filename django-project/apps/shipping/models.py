@@ -1,6 +1,7 @@
 from django.db import models
-from apps.core_app.models import BaseModel
-from apps.core_app.cities import Cities
+
+from apps.core.models import BaseModel
+from apps.core.cities import Cities
 
 
 class Shipping(BaseModel):
@@ -16,4 +17,3 @@ class Shipping(BaseModel):
 
     def __str__(self):
         return self.name
-

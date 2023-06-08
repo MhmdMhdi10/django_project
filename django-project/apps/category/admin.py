@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import Category
-from apps.core_app.admin import BaseAdmin
+from ..core.admin import BaseAdmin
 
 
 @admin.register(Category)
@@ -10,4 +10,3 @@ class CategoryAdmin(BaseAdmin):
     list_display_links = ('name', 'parent')
     search_fields = ('name', 'parent')
     list_per_page = 25
-

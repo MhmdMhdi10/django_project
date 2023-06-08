@@ -103,7 +103,7 @@ const navigation = {
       },
     ],
   }
-
+  
   export default function Footer() {
     return (
       <footer className="bg-white" aria-labelledby="footer-heading">
@@ -214,3 +214,4 @@ const navigation = {
       </footer>
     )
   }
+  

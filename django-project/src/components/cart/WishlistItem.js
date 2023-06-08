@@ -16,7 +16,7 @@ const WishlistItem = ({
     });
 
     const { item_count } = formData;
-
+    
     useEffect(() => {
         if (count)
             setFormData({ ...formData, item_count: count });
@@ -80,7 +80,7 @@ const WishlistItem = ({
                 <div className="mt-4 sm:mt-0 sm:pr-9">
                 <form onSubmit={e => onSubmit(e)}>
                     <select
-                        name='item_count'
+                        name='item_count' 
                         onChange={(e) => onChange(e)}
                         value={item_count}
                         className="max-w-full rounded-md border border-gray-300 py-1.5 text-base leading-5 font-medium text-gray-700 text-left shadow-sm focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -95,7 +95,7 @@ const WishlistItem = ({
                         <option>8</option>
                         <option>9</option>
                     </select>
-                    <button
+                    <button 
                         type="submit"
                         className="-m-2 p-2 inline-flex text-gray-400 hover:text-gray-500">
                         <span className="mx-2">Update</span>
@@ -103,7 +103,7 @@ const WishlistItem = ({
                 </form>
 
                 <div className="absolute top-0 right-0">
-                    <button
+                    <button 
                     onClick={removeItemHandler}
                     className="-m-2 p-2 inline-flex text-gray-400 hover:text-gray-500">
                     <span className="sr-only">Remove</span>
@@ -114,17 +114,17 @@ const WishlistItem = ({
             </div>
 
             <p className="mt-4 flex text-sm text-gray-700 space-x-2">
-                {
-                    item.product &&
+                {     
+                    item.product && 
                     item.product !== null &&
-                    item.product !== undefined &&
+                    item.product !== undefined && 
                     item.product.count > 0 ?
                 (
                     <>
                     <CheckIcon className="flex-shrink-0 h-5 w-5 text-green-500" aria-hidden="true" />
                     <span>In Stock</span>
                     </>
-                )
+                ) 
                 : (
                     <>
                 <ClockIcon className="flex-shrink-0 h-5 w-5 text-gray-300" aria-hidden="true" />

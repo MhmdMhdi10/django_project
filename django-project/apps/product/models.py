@@ -1,8 +1,11 @@
 from django.db import models
+from datetime import datetime
 from apps.category.models import Category
-from apps.core_app.models import BaseModel
 
 from django.conf import settings
+
+from apps.core.models import BaseModel
+
 domain = settings.DOMAIN
 
 
@@ -17,8 +20,8 @@ class Product(BaseModel):
     description = models.TextField()
     price = models.DecimalField(max_digits=6, decimal_places=2)
     discount_price = models.DecimalField(max_digits=6, decimal_places=2)
-    count = models.IntegerField()
-    sold = models.BooleanField(default=False)
+    count = models.IntegerField(default=0)
+    sold = models.IntegerField(default=0)
 
     def get_thumbnail(self):
         if self.photo:

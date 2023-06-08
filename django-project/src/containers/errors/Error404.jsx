@@ -1,11 +1,13 @@
-import Layout from "../../hocs/layout";
+import Layout from "../../hocs/Layout"
 
 const Error404 = () => {
-  return(
-      <Layout>
-          Error404
-      </Layout>
-  )
+    return(
+        <Layout >
+            <div className="text-center m-40">
+            Error404
+            </div>
+        </Layout>
+    )
 }
 
-export default Error404;
+export default Error404

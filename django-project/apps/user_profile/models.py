@@ -1,9 +1,8 @@
 from django.core.validators import RegexValidator
 from django.db import models
-from apps.core_app.models import BaseModel
+from apps.core.models import BaseModel
+from apps.core.cities import Cities
 from django.conf import settings
-from apps.core_app.cities import Cities
-
 
 User = settings.AUTH_USER_MODEL
 domain = settings.DOMAIN
@@ -11,11 +10,12 @@ domain = settings.DOMAIN
 
 class Address(BaseModel):
     class Meta:
-        verbose_name = "address"
-        verbose_name_plural = "addresses"
+        verbose_name = 'Address'
+        verbose_name_plural = 'Addresses'
 
     body = models.TextField()
-    city = models.CharField(max_length=255, choices=Cities.choices, default=Cities.Tehran)
+    city = models.CharField(
+        max_length=255, choices=Cities.choices, default=Cities.Tehran)
 
     def __str__(self):
         return self.body
@@ -33,3 +33,6 @@ class UserProfile(BaseModel):
                                          " Up to 15 digits allowed.")
     phone = models.CharField(validators=[phone_regex], max_length=17)
     image = models.ImageField(upload_to='profiles/%Y/%m/')
+
+    def __str__(self):
+        return self.phone

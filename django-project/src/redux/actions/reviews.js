@@ -226,7 +226,7 @@ export const filter_reviews = (product_id, rating) => async dispatch => {
                 `${process.env.REACT_APP_API_URL}/api/review/filter-reviews/${product_id}?rating=${myRating}`,
                 config
             );
-
+    
             if (res.status === 200) {
                 dispatch({
                     type: FILTER_REVIEWS_SUCCESS,

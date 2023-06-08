@@ -1,9 +1,9 @@
-
-import axios from "axios";
+import axios from 'axios';
 import {
     GET_CATEGORIES_SUCCESS,
-    GET_CATEGORIES_FAIL
-} from "./types";
+    GET_CATEGORIES_FAIL,
+} from './types';
+
 
 export const get_categories = () => async dispatch => {
     const config = {
@@ -17,17 +17,17 @@ export const get_categories = () => async dispatch => {
 
         if (res.status === 200) {
             dispatch({
-                type:GET_CATEGORIES_SUCCESS,
+                type: GET_CATEGORIES_SUCCESS,
                 payload: res.data
             });
         } else {
             dispatch({
-                type:GET_CATEGORIES_FAIL
+                type: GET_CATEGORIES_FAIL
             });
         }
-    } catch (err){
+    } catch(err) {
         dispatch({
-            type:GET_CATEGORIES_FAIL
+            type: GET_CATEGORIES_FAIL
         });
     }
 }

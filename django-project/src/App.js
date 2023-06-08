@@ -1,26 +1,26 @@
-import { Provider } from 'react-redux';
+import {Provider} from 'react-redux';
 import store from './store';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 
-import Home from "./containers/Home";
-import Error404 from "./containers/errors/Error404";
+import Home from './containers/Home';
+import Error404 from './containers/errors/Error404';
 
-import Signup from "./containers/auth/signup";
-import Login from "./containers/auth/login";
-import Activate from "./containers/auth/activate";
-import ResetPassword from "./containers/auth/resetPassword";
-import ResetPasswordConfirm from "./containers/auth/resetPasswordConfirm";
-import ProductDetail from "./containers/pages/productDetail";
-import Shop from "./containers/Shop";
+import Signup from './containers/auth/Signup';
+import Login from './containers/auth/Login';
+import Activate from './containers/auth/Activate';
+import ResetPassword from './containers/auth/ResetPassword';
+import ResetPasswordConfirm from './containers/auth/ResetPasswordConfirm';
+import Shop from './containers/Shop';
+
+import ProductDetail from './containers/pages/productDetail';
+import Search from "./containers/pages/Search";
 import Cart from "./containers/pages/Cart";
 import Checkout from "./containers/pages/Checkout";
-import Search from "./containers/pages/Search";
 import ThankYou from "./containers/pages/ThankYou";
 import Dashboard from "./containers/pages/Dashboard";
+import DashboardProfile from "./containers/pages/DashboardProfile";
 import DashboardPayments from "./containers/pages/DashboardPayments";
 import DashboardPaymentDetail from "./containers/pages/DashboardPaymentDetail";
-import DashboardProfile from "./containers/pages/DashboardProfile";
-
 
 function App() {
     return (

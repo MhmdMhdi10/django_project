@@ -13,12 +13,12 @@ import {
     FILTER_REVIEWS_FAIL,
 } from '../actions/types';
 
-const initialState = {
+const intitialState = {
     review: null,
     reviews: null
 };
 
-export default function Reviews(state = initialState, action) {
+export default function Reviews(state = intitialState, action) {
     const { type, payload } = action;
 
     switch(type) {
